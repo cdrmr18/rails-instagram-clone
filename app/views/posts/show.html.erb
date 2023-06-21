@@ -1,6 +1,36 @@
-<div>
-  <h1><%= @post.caption %></h1>
-  <% @post.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, crop: :fill %>
-  <% end %>
+<div class='flex justify-center mt-5'>
+  <div class="card w-72 bg-white border border-gray-400 rounded-md">
+    <div class="flex justify-between card-header bg-white space-x-1">
+      <div>
+        <% if  @post.user.avatar.attached? %>
+        <%= cl_image_tag @post.user.avatar.key, class: "inline-block h-10 w-10 rounded-full" %>
+        <% else %>
+          <%= image_tag 'avatar.svg', class: "inline-block w-5 rounded-full" %>
+        <% end %>
+        <span><%= @post.user.username %></span>
+      </div>
+      <div>
+        <div class="dropdown">
+          <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= image_tag 'menu-dots.svg', class: 'w-5' %>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end bg-white" aria-labelledby="dropdownMenuLink">
+            <li>
+              <%= link_to 'Edit', edit_user_registration_path, class: "text-gray-700 block px-4 py-2 text-sm" %>
+            </li>
+            <li>
+              <%= link_to 'Delete post', user_registration_path, data: {turbo_method: :delete}, class: "text-gray-700 block px-4 py-2 text-sm" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <%= render 'carousel', post: @post %>
+      <p class='card-text'><%= @post.caption %></p>
+    </div>
+    <div class="card-footer bg-white">
+    comments
+    </div>
+  </div>
 </div>
