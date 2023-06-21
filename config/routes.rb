@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'posts/index'
+  get 'posts/show'
+  get 'posts/new'
+  get 'posts/edit'
   devise_for :users
   devise_scope :user do
     authenticated :user do
@@ -9,4 +13,6 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+
+  resources :posts
 end
