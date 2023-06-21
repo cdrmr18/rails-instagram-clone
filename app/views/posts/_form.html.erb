@@ -1,0 +1,7 @@
+<%= simple_form_for(post) do |f| %>
+  <%= f.input :caption %>
+  <%= f.input :allow_comments, as: :boolean %>
+  <%= f.input :show_likes_count, as: :boolean %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit %>
+<% end %>

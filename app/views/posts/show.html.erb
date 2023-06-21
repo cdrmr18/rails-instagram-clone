@@ -1,0 +1,6 @@
+<div>
+  <h1><%= @post.caption %></h1>
+  <% @post.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, crop: :fill %>
+  <% end %>
+</div>
