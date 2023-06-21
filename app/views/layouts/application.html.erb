@@ -12,10 +12,9 @@
   </head>
 
   <body>
-    <% unless controller_name == "pages" && action_name == 'home' %>
+    <% unless controller_name == "sessions" || controller_name == "registrations" %>
        <%= render "shared/navbar" %>
     <% end %>
-
     <%= render "shared/flashes" %>
 
     <%= yield %>
