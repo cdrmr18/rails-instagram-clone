@@ -15,6 +15,9 @@
     <% unless controller_name == "sessions" || controller_name == "registrations" %>
        <%= render "shared/navbar" %>
     <% end %>
+    <div class="flex justify-center items-center mt-10">
+      <%= render 'story/stories_list' %>
+    </div>
     <%= render "shared/flashes" %>
 
     <%= yield %>

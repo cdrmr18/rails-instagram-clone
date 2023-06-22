@@ -25,3 +25,7 @@ body {
   background-color: #fafafa;
   height: 100%;
 }
+
+.story::-webkit-scrollbar {
+  width: 0;
+}
