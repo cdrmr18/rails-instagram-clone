@@ -1,25 +1,57 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+    <div class="w-1/3 flex justify-end">
+      <%= link_to authenticated_root_path do %>
+        <%= image_tag "logo.png", class: 'h-10 w-32' %>
+      <% end %>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+    <form class="d-flex border bg-gray-100 border-gray-100 p-1 rounded-lg">
+      <div class="flex p-1 ">
+        <input class="p-0 border-none bg-gray-100" type="search" placeholder="Search" aria-label="Search">
+        <%= image_tag "search.svg", class: 'w-4 ml-2' %>
+      </div>
+    </form>
+
+    <div class="hidden w-1/3 lg:block navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav flex justify-between items-center space-x-4">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to authenticated_root_path do %>
+              <%= image_tag "home.svg", class: "w-6" %>
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+            <%= link_to authenticated_root_path do %>
+              <%= image_tag "message.svg", class: "w-6" %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to authenticated_root_path do %>
+              <%= image_tag "pin.svg", class: "w-6" %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to authenticated_root_path do %>
+              <%= image_tag "plus.svg", class: "w-6" %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to authenticated_root_path do %>
+              <%= image_tag "heart.svg", class: "w-6" %>
+            <% end %>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+            <% if current_user.avatar.attached? %>
+              <%= cl_image_tag current_user.avatar.key, class: "inline-block w-6 rounded-full", alt: "dropdown menu" %>
+            <% else %>
+              <%= image_tag 'avatar.svg', class: "inline-block w-6 rounded-full", alt: "dropdown menu" %>
+            <% end %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
