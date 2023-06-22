@@ -15,11 +15,17 @@
     <% unless controller_name == "sessions" || controller_name == "registrations" %>
        <%= render "shared/navbar" %>
     <% end %>
-    <div class="flex justify-center items-center mt-10">
-      <%= render 'story/stories_list' %>
-    </div>
-    <%= render "shared/flashes" %>
+    <div class="flex mt-10 mx-52">
+      <div class="flex flex-col w-2/4">
+        <div class="flex justify-center items-center">
+          <%= render 'story/stories_list' %>
+        </div>
+        <%= yield %>
+      </div>
 
-    <%= yield %>
+      <%= render 'suggestions/suggestion_list' %>
+    </div>
+
+    <%= render "shared/flashes" %>
   </body>
 </html>
