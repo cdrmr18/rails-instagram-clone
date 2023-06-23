@@ -10,8 +10,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-
-
+@import 'filepond';
+@import 'image_preview';
 
 a {
   text-decoration: none;

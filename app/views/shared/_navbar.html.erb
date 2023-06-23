@@ -37,7 +37,7 @@
           </li>
           <li class="nav-item">
             <%= link_to new_post_path do %>
-              <%= image_tag "plus.svg", class: "w-5" %>
+              <%= image_tag "plus.svg", data: { 'bs-toggle': "modal", 'bs-target': "#staticBackdrop" }, class: "w-5" %>
             <% end %>
           </li>
           <li class="nav-item">
@@ -66,3 +66,6 @@
     </div>
   </div>
 </div>
+
+
+<%= render 'posts/form', post: Post.new %>
