@@ -1,7 +1,39 @@
-<%= simple_form_for(post) do |f| %>
-  <%= f.input :caption %>
-  <%= f.input :allow_comments, as: :boolean %>
-  <%= f.input :show_likes_count, as: :boolean %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit %>
-<% end %>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <%= simple_form_for(post) do |f| %>
+    <div class="modal-dialog">
+      <div class="modal-content bg-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Create new post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body flex space-x-2">
+            <div class='w-[60%] border-end border-gray-500 pr-2'>
+              <%= f.input :photos, label: false,  as: :file, input_html: { multiple: true } %>
+            </div>
+            <div class='space-y-2'>
+              <div>
+                <% if  current_user.avatar.attached? %>
+                <%= cl_image_tag current_user.avatar.key, class: "inline-block h-10 w-10 rounded-full" %>
+                <% else %>
+                  <%= image_tag 'avatar.svg', class: "inline-block w-5 rounded-full" %>
+                <% end %>
+                <span><%= current_user.username %></span>
+              </div>
+              <%= f.text_area :caption, placeholder: 'Write a caption...', class: 'border-0', label: false, style: 'resize:none' %>
+              <div class="form-check form-switch">
+                <%= f.input :allow_comments, as: :boolean, class: "form-check-input", id: "flexSwitchCheckDefault", role: 'switch' %>
+              </div>
+              <div class="form-check form-switch">
+                <%= f.input :show_likes_count, as: :boolean, class: "form-check-input", id: "flexSwitchCheckDefault", role: 'switch' %>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <%= f.submit 'Post', class: "btn btn-primary"%>
+        </div>
+    </div>
+  <% end %>
+  </div>
+</div>
