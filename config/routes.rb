@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   end
 
   resources :posts
+
+  post '/toggle_like', to: 'likes#toggle_like', as: :toggle_like
 end
