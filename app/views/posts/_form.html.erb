@@ -20,7 +20,7 @@
                 <% end %>
                 <span><%= current_user.username %></span>
               </div>
-              <%= f.text_area :caption, placeholder: 'Write a caption...', class: 'border-0', label: false, style: 'resize:none' %>
+              <%= f.text_area :caption, placeholder: 'Write a caption...', class: 'h-32 border-0', label: false, style: 'resize:none' %>
               <div class="form-check form-switch">
                 <%= f.input :allow_comments, as: :boolean, class: "form-check-input", id: "flexSwitchCheckDefault", role: 'switch' %>
               </div>
@@ -31,7 +31,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <%= f.submit 'Post', class: "btn btn-primary"%>
+          <%= f.submit 'Post', class: "btn btn-primary" %>
         </div>
     </div>
   <% end %>

@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import FilePondController from "./file_pond_controller"
+application.register("file-pond", FilePondController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

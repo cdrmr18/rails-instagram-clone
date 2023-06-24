@@ -418,6 +418,11 @@ fastest-levenshtein@^1.0.12:
   resolved "https://registry.yarnpkg.com/fastest-levenshtein/-/fastest-levenshtein-1.0.16.tgz#210e61b6ff181de91ea9b3d1b84fdedd47e034e5"
   integrity sha512-eRnCtTTtGZFpQCwhJiUOuxPQWRXVKYDn0b2PeHfXL6/Zi53SLAzAHfVhVWK2AryC/WH05kGfxhFIPvTF0SXQzg==
 
+filepond-plugin-file-validate-type@^1.2.8:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-file-validate-type/-/filepond-plugin-file-validate-type-1.2.8.tgz#58ab1815a3f505f2189e6943263ae3b6cb314bd1"
+  integrity sha512-UBTqIWbk5+5R0GBELI8svu01MHWjFSLfc9DfCMvFtHKXLdJMxY1p37ChC4YKQjhfODaTuvLnNVRsukMGMFZBBg==
+
 filepond-plugin-image-preview@^4.6.11:
   version "4.6.11"
   resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.6.11.tgz#706a66ac859fa91dd7153958b2325b512fe2f0c6"

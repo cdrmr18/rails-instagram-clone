@@ -17,7 +17,8 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post)
     else
-      render :new, status: :unprocessable_entity
+      redirect_to authenticated_root_path, status: :unprocessable_entity, alert: @post.errors.full_messages
+
     end
   end
 
