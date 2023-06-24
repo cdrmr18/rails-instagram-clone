@@ -8,6 +8,15 @@ class LikesController < ApplicationController
     else
       Like.create(user: current_user, post: @post)
     end
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "post#{@post.id}actions",
+          partial: 'posts/post_actions',
+          locals: {post: @post}
+        )
+      end
+    end
   end
 
   private

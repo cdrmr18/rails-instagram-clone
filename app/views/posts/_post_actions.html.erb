@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "post#{post.id}actions" do %>
+  <div class="flex justify-start items-center space-x-3 mb-3">
+    <%= button_to toggle_like_path(post_id: post), id: "post#{post.id}actions-likeBtn" do %>
+      <% if post.likes.find_by(user: current_user) %>
+        <%= image_tag "red-heart.svg", class: 'w-4' %>
+      <% else %>
+        <%= image_tag "heart.svg", class: 'w-4' %>
+      <% end %>
+    <% end %>
+    <%= image_tag "comment.svg", class: 'w-4' %>
+  </div>
+  <small class='text-xs font-semibold my-1'><%= pluralize(post.likes.count, 'like') %></small>
+<% end  %>

@@ -27,6 +27,7 @@
     </div>
     <div class="card-body">
       <%= render 'posts/carousel', post: post %>
+      <%= render 'posts/post_actions', post: post %>
       <p class='text-sm'><span class='font-semibold'><%= post.user.username %></span> <%= post.caption %></p>
       <p class='text-sm text-gray-600'>View all XX comments</p>
       <p class='text-xs text-gray-500'><%= time_ago_in_words(post.created_at) %> ago</p>
@@ -38,3 +39,4 @@
     </div>
   </div>
 </div>
+
