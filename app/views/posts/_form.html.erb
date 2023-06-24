@@ -22,10 +22,10 @@
               </div>
               <%= f.text_area :caption, placeholder: 'Write a caption...', class: 'h-32 border-0', label: false, style: 'resize:none' %>
               <div class="form-check form-switch">
-                <%= f.input :allow_comments, as: :boolean, class: "form-check-input", id: "flexSwitchCheckDefault", role: 'switch' %>
+                <%= f.input :allow_comments, as: :boolean, input_html: { checked: true }, class: "form-check-input", id: "flexSwitchCheckDefault", role: 'switch' %>
               </div>
               <div class="form-check form-switch">
-                <%= f.input :show_likes_count, as: :boolean, class: "form-check-input", id: "flexSwitchCheckDefault", role: 'switch' %>
+                <%= f.input :show_likes_count, as: :boolean, input_html: { checked: true }, class: "form-check-input", id: "flexSwitchCheckDefault", role: 'switch' %>
               </div>
             </div>
         </div>
