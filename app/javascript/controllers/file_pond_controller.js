@@ -1,4 +1,5 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
+import "filepond";
 import * as FilePond from "filepond";
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 // Get a reference to the file input element
