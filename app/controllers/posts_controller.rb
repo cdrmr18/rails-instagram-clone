@@ -18,7 +18,6 @@ class PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       redirect_to authenticated_root_path, status: :unprocessable_entity, alert: @post.errors.full_messages
-
     end
   end
 
