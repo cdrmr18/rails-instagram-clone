@@ -15,5 +15,5 @@
     <%= link_to 'See all', posts_path, class: 'text-black text-xs' %>
   </div>
 
-  <%= render 'suggestions/suggestions' %>
+  <%= render 'suggestions/suggestions', user: current_user %>
 </div>

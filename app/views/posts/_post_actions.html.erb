@@ -9,5 +9,22 @@
     <% end %>
     <%= image_tag "comment.svg", class: 'w-4' %>
   </div>
-  <small class='text-xs font-semibold my-1'><%= pluralize(post.likes.count, 'like') %></small>
+  <a class='text-xs font-semibold my-1 cursor-pointer text-black' data-bs-toggle="modal" data-bs-target="#post<%= post.id %>_likes_modal"><%= pluralize(post.likes.count, 'like') %></a>
+  <!-- Modal -->
+  <div class="modal fade" id="post<%= post.id %>_likes_modal" tabindex="-1" aria-labelledby="post<%= post.id %>_likes_modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="post<%= post.id %>_likes_modalLabel">Post likes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <% post.likers.each do |liker| %>
+            <%= render 'suggestions/suggestions', user: liker %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end  %>
+
