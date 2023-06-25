@@ -4,11 +4,18 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
-
     if @comment.save
-      redirect_to post_path(@post)
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(
+            "post#{@post.id}comments",
+            partial: 'posts/post_comments',
+            locals: {post: @post}
+          )
+        end
+      end
     else
-      render :new, status: :unprocessable_entity
+      redirect_to post_path(@post), status: :unprocessable_entity
     end
   end
 

@@ -29,14 +29,17 @@
       <%= render 'posts/carousel', post: post %>
       <%= render 'posts/post_actions', post: post %>
       <p class='text-sm'><span class='font-semibold'><%= post.user.username %></span> <%= post.caption %></p>
-      <p class='text-sm text-gray-600'>View all XX comments</p>
+      <%= render 'posts/post_comments', post: post %>
       <p class='text-xs text-gray-500'><%= time_ago_in_words(post.created_at) %> ago</p>
     </div>
-    <div class="card-footer flex items-center justify-between bg-white">
+    <div class="card-footer flex items-center justify-between bg-white space-x-1 h-10" data-controller="reset-form">
       <%= image_tag 'happy-face.svg', class: "inline-block w-5 rounded-full" %>
-      <input type="text" class='w-3/4 text-sm' placeholder="Add a comment..." style='border:none; outline:none;'>
-      <%= link_to 'Post', posts_path, class: 'text-xs font-semibold' %>
+      <%= simple_form_for([post, Comment.new], data: { action: "turbo:submit-end->reset-form#reset"}) do |f| %>
+        <div class="flex justify-center items-center space-x-1 h-10">
+          <%= f.input :body, label: false, class: 'w-3/4 text-sm resize-none post-comment', placeholder: "Add a comment...", input_html: {data: {'reset-form-target': 'input'}} %>
+          <%= f.submit 'Post', class: "text-xs font-semibold" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
-

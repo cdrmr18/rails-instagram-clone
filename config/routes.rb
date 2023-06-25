@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create]
+  end
 
   post '/toggle_like', to: 'likes#toggle_like', as: :toggle_like
-  resouces :comments, only: [:create, :destroy]
+  resources :comments, only: [:destroy]
 end

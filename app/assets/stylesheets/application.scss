@@ -29,3 +29,18 @@ body {
 .story::-webkit-scrollbar {
   width: 0;
 }
+
+textarea {
+  resize: none;
+  border: none !important;
+  background-color: white !important;
+  height: 24px !important;
+}
+textarea:focus{
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.comment_body {
+  margin-bottom: 0 !important;
+}
