@@ -1,0 +1,33 @@
+<div class="container flex justify-center items-start my-10 border-bottom" style='min-height:20rem;'>
+  <div class="flex justify-center items-center w-25">
+    <% if user.avatar.attached? %>
+      <%= cl_image_tag user.avatar.key, class: "inline-block w-full rounded-full", alt: "dropdown menu" %>
+    <% else %>
+      <%= image_tag 'avatar.svg', class: "inline-block w-full rounded-full", alt: "dropdown menu" %>
+    <% end %>
+  </div>
+
+  <div class='w-75 px-20 space-y-3'>
+    <div class="flex items-center space-x-4">
+      <h2 class='m-0'><%= user.username %></h2>
+
+      <div class="flex items-center space-x-4">
+        <%= link_to 'Message', posts_path, class: 'text-xs text-black border border-gray-400 rounded-md px-2 py-1' %>
+        <%= link_to 'Follow', posts_path, class: 'text-xs text-black border border-gray-400 rounded-md px-2 py-1' %>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      <p class='text-xs font-semibold'><%= pluralize(user.posts.count, 'post') %></p>
+      <p class='text-xs font-semibold'><%= pluralize(100, 'follower') %></p>
+      <p class='text-xs font-semibold'><%= pluralize(200, 'following') %></p>
+    </div>
+
+    <div>
+      <p class='mb-1 font-semibold'><%= user.full_name %></p>
+      <div>
+        <%= user.bio %>
+      </div>
+    </div>
+  </div>
+</div>

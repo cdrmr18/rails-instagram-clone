@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   devise_for :users
   devise_scope :user do
     authenticated :user do
@@ -16,4 +17,5 @@ Rails.application.routes.draw do
 
   post '/toggle_like', to: 'likes#toggle_like', as: :toggle_like
   resources :comments, only: [:destroy]
+  resources :users, only: :show
 end
