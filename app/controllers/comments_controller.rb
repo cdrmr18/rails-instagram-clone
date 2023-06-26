@@ -4,18 +4,15 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
-    if @comment.save
-      respond_to do |format|
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.replace(
-            "post#{@post.id}comments",
-            partial: 'posts/post_comments',
-            locals: {post: @post}
-          )
-        end
+    @comment.save
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "post#{@post.id}comments",
+          partial: 'posts/post_comments',
+          locals: {post: @post}
+        )
       end
-    else
-      redirect_to post_path(@post), status: :unprocessable_entity
     end
   end
 
@@ -23,8 +20,16 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.user == current_user
       @comment.destroy
+
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.remove(
+            "post#{@comment.post.id}ModalComment#{@comment.id}"
+          )
+        end
+      end
     end
-    redirect_to post_path(@post)
+
   end
 
   private

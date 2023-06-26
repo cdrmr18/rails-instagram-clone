@@ -7,10 +7,10 @@
         <%= image_tag "heart.svg", class: 'w-4' %>
       <% end %>
     <% end %>
-    <%= image_tag "comment.svg", class: 'w-4' %>
+    <%= image_tag "comment.svg", class: 'w-4 cursor-pointer', data: {"bs-toggle": "modal","bs-target": "#post#{post.id}CommentsModal"} %>
   </div>
   <a class='text-xs font-semibold my-1 cursor-pointer text-black' data-bs-toggle="modal" data-bs-target="#post<%= post.id %>_likes_modal"><%= pluralize(post.likes.count, 'like') %></a>
-  <!-- Modal -->
+  <!-- Likes Modal -->
   <div class="modal fade" id="post<%= post.id %>_likes_modal" tabindex="-1" aria-labelledby="post<%= post.id %>_likes_modalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -26,5 +26,6 @@
       </div>
     </div>
   </div>
+
 <% end  %>
 

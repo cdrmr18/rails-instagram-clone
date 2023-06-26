@@ -1,0 +1,14 @@
+<div id="post<%= comment.post.id %>ModalComment<%= comment.id %>">
+  <div class='flex justify-between items-center mt-3'>
+    <div class="flex items-center space-x-2">
+      <%= image_tag 'avatar.svg', class: "rounded-full w-6" %>
+      <div>
+        <p class='font-semibold mb-0 text-xs'><%= comment.user.username %></p>
+        <p class='font-light mb-0 text-xs'><%= comment.body %></p>
+      </div>
+    </div>
+    <% if comment.user == current_user %>
+      <%= button_to 'X', comment_path(comment.id), method: :delete %>
+    <% end %>
+  </div>
+</div>

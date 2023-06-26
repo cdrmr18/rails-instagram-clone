@@ -1,8 +1,25 @@
 <%= turbo_frame_tag "post#{post.id}comments" do %>
   <% if post.comments.count > 0 %>
-    <p class='text-sm text-gray-600'>View all <%= pluralize(post.comments.count, 'comment') %></p>
+    <a class='text-sm text-gray-600 cursor-pointer' data-bs-toggle="modal" data-bs-target="#post<%=post.id%>CommentsModal">View all <%= pluralize(post.comments.count, 'comment') %></a>
   <% end %>
   <% post.comments.last(4).each do |comment| %>
     <p class='text-xs'><span class='font-semibold'><%= comment.user.username %></span> <%= comment.body %></p>
   <% end %>
+  <!-- Modal -->
+  <div class="modal fade" id="post<%=post.id%>CommentsModal" tabindex="-1" aria-labelledby="post<%=post.id%>ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="post<%=post.id%>ModalLabel">Post comments</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <% post.comments.each do |comment| %>
+            <%= render 'posts/comments', comment: comment %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
+
