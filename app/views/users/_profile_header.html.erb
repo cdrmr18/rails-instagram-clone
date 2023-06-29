@@ -13,14 +13,19 @@
 
       <div class="flex items-center space-x-4">
         <%= link_to 'Message', posts_path, class: 'text-xs text-black border border-gray-400 rounded-md px-2 py-1' %>
-        <%= link_to 'Follow', posts_path, class: 'text-xs text-black border border-gray-400 rounded-md px-2 py-1' %>
+
+        <%= render 'shared/following', user: user %>
+
+        <% if current_user == user %>
+          <%= link_to 'Edit profile', edit_user_registration_path, class: 'text-xs text-black border border-gray-400 rounded-md px-2 py-1' %>
+        <% end %>
       </div>
     </div>
 
     <div class="flex items-center space-x-4">
       <p class='text-xs font-semibold'><%= pluralize(user.posts.count, 'post') %></p>
-      <p class='text-xs font-semibold'><%= pluralize(100, 'follower') %></p>
-      <p class='text-xs font-semibold'><%= pluralize(200, 'following') %></p>
+      <p class='text-xs font-semibold'><%= pluralize(user.followers.count, 'follower') %></p>
+      <p class='text-xs font-semibold'><%= pluralize(user.followings.count, 'following') %></p>
     </div>
 
     <div>

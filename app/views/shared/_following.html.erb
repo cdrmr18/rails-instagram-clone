@@ -1,0 +1,7 @@
+<% if current_user.followings.include?(user) %>
+  <%= link_to 'Unfollow', unfollow_path(user), data: {turbo_method: :delete}, class: 'text-xs text-black border border-gray-400 rounded-md px-2 py-1' %>
+<% elsif current_user.pending_followings.include?(user) %>
+  <%= link_to 'Cancel request', cancel_req_path(user), data: {turbo_method: :delete}, class: 'text-xs text-black border border-gray-400 rounded-md px-2 py-1' %>
+<% elsif current_user != user %>
+  <%= link_to 'Follow', follow_path(user), data: {turbo_method: :post}, class: 'text-xs text-black border border-gray-400 rounded-md px-2 py-1' %>
+<% end %>
